@@ -1,0 +1,165 @@
+VCD info: dumpfile dma_tb.vcd opened for output.
+[*] Simulation Random Seed Initialized: 305419896 (0x12345678)
+
+=======================================================
+    DMA Subsystem Verification Suite - Phase 3
+=======================================================
+
+>>> TEST_START: TC01_RESET_AND_REG_DEFAULTS
+[+] Reset initialized properly. STATUS = 0x00000000, FSM = 0, FIFO occ = 0
+>>> TEST_RESULT: PASS (TC01_RESET_AND_REG_DEFAULTS)
+
+>>> TEST_START: TC02_SINGLE_WORD_TRANSFER
+[+] SCOREBOARD MATCH: 1 words (0x00001000 -> 0x00002000) verified successfully.
+[+] Single-word transfer complete in 22 cycles (Throughput: 0.18 B/cycle).
+>>> TEST_RESULT: PASS (TC02_SINGLE_WORD_TRANSFER)
+
+>>> TEST_START: TC03_BURST_2_TRANSFER
+[+] SCOREBOARD MATCH: 4 words (0x00001000 -> 0x00002000) verified successfully.
+[+] 2-beat burst transfer complete in 54 cycles (Throughput: 0.30 B/cycle).
+>>> TEST_RESULT: PASS (TC03_BURST_2_TRANSFER)
+
+>>> TEST_START: TC04_BURST_4_TRANSFER
+[+] SCOREBOARD MATCH: 16 words (0x00001000 -> 0x00002000) verified successfully.
+[+] 4-beat burst transfer complete in 180 cycles (Throughput: 0.36 B/cycle).
+>>> TEST_RESULT: PASS (TC04_BURST_4_TRANSFER)
+
+>>> TEST_START: TC05_BURST_8_TRANSFER
+[+] SCOREBOARD MATCH: 32 words (0x00001000 -> 0x00002000) verified successfully.
+[+] 8-beat burst transfer complete in 340 cycles (Throughput: 0.38 B/cycle).
+>>> TEST_RESULT: PASS (TC05_BURST_8_TRANSFER)
+
+>>> TEST_START: TC06_INCOMPLETE_REMAINDER_BURST
+[+] SCOREBOARD MATCH: 5 words (0x00001000 -> 0x00002000) verified successfully.
+[+] Remainder burst (4 + 1 words) completed cleanly: 66 cycles.
+>>> TEST_RESULT: PASS (TC06_INCOMPLETE_REMAINDER_BURST)
+
+>>> TEST_START: TC07_FIFO_BACKPRESSURE_HANDLING
+[+] SCOREBOARD MATCH: 16 words (0x00001000 -> 0x00002000) verified successfully.
+[+] Backpressure flow control handled successfully with 0 overflows/underflows.
+>>> TEST_RESULT: PASS (TC07_FIFO_BACKPRESSURE_HANDLING)
+
+>>> TEST_START: TC08_FIXED_PRIORITY_ARBITRATION_CONTENTION
+[+] SCOREBOARD MATCH: 8 words (0x00001000 -> 0x00002000) verified successfully.
+[+] Fixed-priority arbitration verified: DMA held priority over external requester.
+>>> TEST_RESULT: PASS (TC08_FIXED_PRIORITY_ARBITRATION_CONTENTION)
+
+>>> TEST_START: TC09_ROUND_ROBIN_ARBITRATION_CONTENTION
+[+] SCOREBOARD MATCH: 8 words (0x00001000 -> 0x00002000) verified successfully.
+[+] Round-Robin arbitration contention passed: Fair bus sharing verified.
+>>> TEST_RESULT: PASS (TC09_ROUND_ROBIN_ARBITRATION_CONTENTION)
+
+>>> TEST_START: TC10_ERR_ZERO_LENGTH
+[+] ERROR VERIFIED: ERR_INVALID_CFG correctly latched (STATUS = 0x00000044, BUSY = 0).
+>>> TEST_RESULT: PASS (TC10_ERR_ZERO_LENGTH)
+
+>>> TEST_START: TC11_ERR_UNALIGNED_LENGTH
+[+] ERROR VERIFIED: ERR_INVALID_CFG correctly latched (STATUS = 0x00000044, BUSY = 0).
+>>> TEST_RESULT: PASS (TC11_ERR_UNALIGNED_LENGTH)
+
+>>> TEST_START: TC12_ERR_UNALIGNED_SRC_ADDR
+[+] ERROR VERIFIED: ERR_ALIGN correctly latched (STATUS = 0x00000050, BUSY = 0).
+>>> TEST_RESULT: PASS (TC12_ERR_UNALIGNED_SRC_ADDR)
+
+>>> TEST_START: TC13_ERR_UNALIGNED_DST_ADDR
+[+] ERROR VERIFIED: ERR_ALIGN correctly latched (STATUS = 0x00000050, BUSY = 0).
+>>> TEST_RESULT: PASS (TC13_ERR_UNALIGNED_DST_ADDR)
+
+>>> TEST_START: TC14_ERR_BUS_READ_INJECTION
+[+] ERROR VERIFIED: ERR_BUS correctly latched (STATUS = 0x00000060, BUSY = 0).
+[+] Bus error during read cleanly halted engine and asserted IRQ.
+>>> TEST_RESULT: PASS (TC14_ERR_BUS_READ_INJECTION)
+
+>>> TEST_START: TC15_ERR_BUS_WRITE_INJECTION
+[+] ERROR VERIFIED: ERR_BUS correctly latched (STATUS = 0x00000060, BUSY = 0).
+[+] Bus error during write cleanly halted engine and asserted IRQ.
+>>> TEST_RESULT: PASS (TC15_ERR_BUS_WRITE_INJECTION)
+
+>>> TEST_START: TC16_ERR_WATCHDOG_TIMEOUT
+[+] ERROR VERIFIED: ERR_MEM_TIMEOUT correctly latched (STATUS = 0x00000048, BUSY = 0).
+[+] Watchdog timeout detected correctly after 200 cycles; engine gracefully aborted.
+>>> TEST_RESULT: PASS (TC16_ERR_WATCHDOG_TIMEOUT)
+
+>>> TEST_START: TC17_RELIABILITY_SW_ABORT
+[+] Software abort returned FSM to IDLE (BUSY=0, bytes transferred before abort: 0).
+>>> TEST_RESULT: PASS (TC17_RELIABILITY_SW_ABORT)
+
+>>> TEST_START: TC18_RELIABILITY_SOFT_RESET_RECOVERY
+[+] SCOREBOARD MATCH: 4 words (0x00001000 -> 0x00002000) verified successfully.
+[+] Soft reset cleared all state; re-armed transfer completed with 100% data match.
+>>> TEST_RESULT: PASS (TC18_RELIABILITY_SOFT_RESET_RECOVERY)
+
+>>> TEST_START: TC19_LATENCY_ZERO_WAIT_STATE
+[+] SCOREBOARD MATCH: 8 words (0x00001000 -> 0x00002000) verified successfully.
+[+] Zero-wait-state transfer complete in 78 cycles (Throughput: 0.41 B/cycle).
+>>> TEST_RESULT: PASS (TC19_LATENCY_ZERO_WAIT_STATE)
+
+>>> TEST_START: TC20_LATENCY_HIGH_LATENCY_SLAVE
+[+] SCOREBOARD MATCH: 8 words (0x00001000 -> 0x00002000) verified successfully.
+[+] 4-cycle high-latency transfer completed successfully in 142 cycles.
+>>> TEST_RESULT: PASS (TC20_LATENCY_HIGH_LATENCY_SLAVE)
+
+>>> TEST_START: TC21_FIFO_CAPACITY_SATURATION
+[+] SCOREBOARD MATCH: 64 words (0x00001000 -> 0x00002000) verified successfully.
+[+] Large 256-byte multi-burst saturation transfer completed cleanly without overflow/underflow.
+>>> TEST_RESULT: PASS (TC21_FIFO_CAPACITY_SATURATION)
+
+>>> TEST_START: TC22_CONSTRAINED_RANDOM_REGRESSION
+[*] Executing 25 constrained-random transfers with Seed = 305419896 (0x12345678)...
+[+] SCOREBOARD MATCH: 6 words (0x00001034 -> 0x0000203c) verified successfully.
+[+] SCOREBOARD MATCH: 13 words (0x0000103c -> 0x00002014) verified successfully.
+[+] SCOREBOARD MATCH: 28 words (0x00001000 -> 0x00002030) verified successfully.
+[+] SCOREBOARD MATCH: 4 words (0x00001004 -> 0x0000200c) verified successfully.
+[+] SCOREBOARD MATCH: 3 words (0x0000101c -> 0x00002014) verified successfully.
+[+] SCOREBOARD MATCH: 23 words (0x00001028 -> 0x00002010) verified successfully.
+[+] SCOREBOARD MATCH: 30 words (0x0000100c -> 0x00002024) verified successfully.
+[+] SCOREBOARD MATCH: 30 words (0x00001034 -> 0x00002034) verified successfully.
+[+] SCOREBOARD MATCH: 11 words (0x00001008 -> 0x00002014) verified successfully.
+[+] SCOREBOARD MATCH: 9 words (0x00001030 -> 0x0000203c) verified successfully.
+[+] SCOREBOARD MATCH: 15 words (0x00001014 -> 0x0000201c) verified successfully.
+[+] SCOREBOARD MATCH: 15 words (0x0000103c -> 0x00002030) verified successfully.
+[+] SCOREBOARD MATCH: 17 words (0x0000103c -> 0x00002038) verified successfully.
+[+] SCOREBOARD MATCH: 13 words (0x00001000 -> 0x00002038) verified successfully.
+[+] SCOREBOARD MATCH: 27 words (0x00001034 -> 0x00002008) verified successfully.
+[+] SCOREBOARD MATCH: 9 words (0x00001034 -> 0x00002018) verified successfully.
+[+] SCOREBOARD MATCH: 16 words (0x00001004 -> 0x00002028) verified successfully.
+[+] SCOREBOARD MATCH: 23 words (0x00001000 -> 0x0000202c) verified successfully.
+[+] SCOREBOARD MATCH: 8 words (0x00001034 -> 0x00002010) verified successfully.
+[+] SCOREBOARD MATCH: 7 words (0x00001004 -> 0x0000201c) verified successfully.
+[+] SCOREBOARD MATCH: 27 words (0x00001038 -> 0x0000202c) verified successfully.
+[+] SCOREBOARD MATCH: 20 words (0x00001014 -> 0x0000200c) verified successfully.
+[+] SCOREBOARD MATCH: 21 words (0x00001038 -> 0x0000202c) verified successfully.
+[+] SCOREBOARD MATCH: 14 words (0x00001000 -> 0x00002024) verified successfully.
+[+] SCOREBOARD MATCH: 24 words (0x00001038 -> 0x00002034) verified successfully.
+[+] All 25 constrained-random transfers PASSED with 0 mismatches!
+>>> TEST_RESULT: PASS (TC22_CONSTRAINED_RANDOM_REGRESSION)
+
+=======================================================
+         FUNCTIONAL COVERAGE SUMMARY REPORT
+=======================================================
+ Total Coverage Bins Defined : 24
+ Total Coverage Bins Hit     : 24
+ Overall Coverage Percentage : 100.0%
+-------------------------------------------------------
+ [BURST BINS]   1-Beat: 9 | 2-Beat: 11 | 4-Beat: 11 | 8-Beat: 5
+ [LENGTH BINS]  Single: 1 | Short: 3 | Med: 19 | Long: 13 | Rem: 15
+ [ERROR BINS]   ZeroLen: 1 | UnalignLen: 1 | UnalignSrc: 1 | UnalignDst: 1
+                BusRdErr: 1 | BusWrErr: 1 | Timeout: 1
+ [CONTROL BINS] SWAbort: 1 | SoftReset: 1
+ [LATENCY BINS] 0-Cycle: 7 | 1-Cycle: 14 | Multi-Cycle: 15
+ [ARBITER BINS] FixedPri: 35 | RoundRobin: 1 | BurstLock: 27
+=======================================================
+
+
+=======================================================
+         PHASE 3 VERIFICATION SUMMARY REPORT
+=======================================================
+ Total Tests Executed     : 22
+ Total Tests Passed       : 22
+ Total Tests Failed       : 0
+ Total Assertion Checks   : 8688
+ Assertion Failures       : 0
+ Total Simulation Cycles  : 8688
+ [REGRESSION STATUS]      : ALL TESTS PASSED (100% SUCCESS)
+=======================================================
+

@@ -1,0 +1,3 @@
+run_id,suite,seed,bug_injection,verdict,failure_category,sim_time_sec,total_tests,passed_tests,failed_tests,assertion_violation_count,scoreboard_mismatch_count
+run_20261018_235323_a7686d,arbiter,305419896,none,PASSED,NONE,0.022,7,7,0,0,0
+run_20261018_235323_6166bc,arbiter,485517484,none,PASSED,NONE,0.018,7,7,0,0,0

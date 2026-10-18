@@ -1,0 +1,36 @@
+# ==============================================================================
+# Quartus Prime Settings File (QSF) for DMA Subsystem (Phase 9)
+# AMD Design / Performance Verification Engineering Lab
+# Target Device: Cyclone V 5CSXFC6D6F31C6 (or MAX 10 10M50DAF484C7G)
+# ==============================================================================
+
+set_global_assignment -name FAMILY "Cyclone V"
+set_global_assignment -name DEVICE 5CSXFC6D6F31C6
+set_global_assignment -name TOP_LEVEL_ENTITY dma_top
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION 20.1.1
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "2026-10-18"
+set_global_assignment -name LAST_QUARTUS_VERSION "20.1.1"
+
+# RTL Source Files
+set_global_assignment -name VERILOG_FILE ../rtl/dma_fifo.v
+set_global_assignment -name VERILOG_FILE ../rtl/dma_arbiter.v
+set_global_assignment -name VERILOG_FILE ../rtl/dma_top.v
+
+# Timing Constraints SDC
+set_global_assignment -name SDC_FILE dma_constraints.sdc
+
+# Synthesis Optimization & Standards
+set_global_assignment -name VERILOG_INPUT_VERSION VERILOG_2001
+set_global_assignment -name OPTIMIZATION_MODE "BALANCED"
+set_global_assignment -name CYCLONEII_OPTIMIZATION_TECHNIQUE SPEED
+set_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS ON
+set_global_assignment -name REMOVE_REDUNDANT_LOGIC_CELLS ON
+set_global_assignment -name ALLOW_ANY_RAM_SIZE_FOR_RECOGNITION ON
+set_global_assignment -name AUTO_RESOURCE_SHARING ON
+
+# Safe State Machine Encoding
+set_global_assignment -name STATE_MACHINE_PROCESSING "SAFE"
+
+# Output Netlist & Reporting
+set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
+set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL

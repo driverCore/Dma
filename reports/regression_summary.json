@@ -1,0 +1,183 @@
+{
+  "timestamp": "2026-10-18T18:23:23Z",
+  "suite": "arbiter",
+  "total_runs": 2,
+  "passed_runs": 2,
+  "failed_runs": 0,
+  "runs": [
+    {
+      "run_id": "run_20261018_235323_a7686d",
+      "suite": "arbiter",
+      "seed": 305419896,
+      "bug_injection": "none",
+      "verdict": "PASSED",
+      "failure_category": "NONE",
+      "compile_time_sec": 0.063,
+      "sim_time_sec": 0.022,
+      "total_tests": 7,
+      "passed_tests": 7,
+      "failed_tests": 0,
+      "assertion_violation_count": 0,
+      "assertion_violations": [],
+      "scoreboard_mismatch_count": 0,
+      "scoreboard_mismatches": [],
+      "functional_coverage": {
+        "total_bins": 24,
+        "covered_bins": 0,
+        "coverage_percentage": 0.0
+      },
+      "vcd_generated": true,
+      "run_dir": "C:\\Users\\aryan\\Downloads\\amd\\P1\\runs\\run_20261018_235323_a7686d",
+      "log_file": "C:\\Users\\aryan\\Downloads\\amd\\P1\\runs\\run_20261018_235323_a7686d\\sim.log",
+      "tests": [
+        {
+          "name": "TC01_ARB_RESET_AND_IDLE",
+          "status": "PASSED",
+          "details": [
+            "[+] Reset initialized properly: grant=2'b00, valid=0"
+          ],
+          "result_raw": "PASS (TC01_ARB_RESET_AND_IDLE)"
+        },
+        {
+          "name": "TC02_ARB_ISOLATED_GRANTS",
+          "status": "PASSED",
+          "details": [
+            "[+] Isolated Req 0 granted correctly.",
+            "[+] Isolated Req 1 granted correctly."
+          ],
+          "result_raw": "PASS (TC02_ARB_ISOLATED_GRANTS)"
+        },
+        {
+          "name": "TC03_ARB_FIXED_PRIORITY_CONTENTION",
+          "status": "PASSED",
+          "details": [
+            "[+] Fixed priority resolved in favor of Req 0: grant=2'b01, id=0"
+          ],
+          "result_raw": "PASS (TC03_ARB_FIXED_PRIORITY_CONTENTION)"
+        },
+        {
+          "name": "TC04_ARB_FIXED_PRIORITY_STARVATION",
+          "status": "PASSED",
+          "details": [
+            "[+] Req 1 starved as expected under fixed priority: wait_cycles_req1=12"
+          ],
+          "result_raw": "PASS (TC04_ARB_FIXED_PRIORITY_STARVATION)"
+        },
+        {
+          "name": "TC05_ARB_ROUND_ROBIN_FAIRNESS",
+          "status": "PASSED",
+          "details": [
+            "[+] Round-Robin Grants over 10 rounds: Req 0 = 5, Req 1 = 5",
+            "[+] Perfect 50/50 round-robin fairness achieved!"
+          ],
+          "result_raw": "PASS (TC05_ARB_ROUND_ROBIN_FAIRNESS)"
+        },
+        {
+          "name": "TC06_ARB_BURST_LOCK_NON_PREEMPTION",
+          "status": "PASSED",
+          "details": [
+            "[+] Req 1 acquired grant with burst_lock.",
+            "[+] Non-preemption verified: Req 1 held grant across 5 cycles despite Req 0 contention.",
+            "[+] Upon lock release, higher-priority Req 0 immediately granted."
+          ],
+          "result_raw": "PASS (TC06_ARB_BURST_LOCK_NON_PREEMPTION)"
+        },
+        {
+          "name": "TC07_ARB_REQUEST_WITHDRAWAL",
+          "status": "PASSED",
+          "details": [
+            "[+] Request withdrawal handled cleanly; arbiter idle."
+          ],
+          "result_raw": "PASS (TC07_ARB_REQUEST_WITHDRAWAL)"
+        }
+      ]
+    },
+    {
+      "run_id": "run_20261018_235323_6166bc",
+      "suite": "arbiter",
+      "seed": 485517484,
+      "bug_injection": "none",
+      "verdict": "PASSED",
+      "failure_category": "NONE",
+      "compile_time_sec": 0.064,
+      "sim_time_sec": 0.018,
+      "total_tests": 7,
+      "passed_tests": 7,
+      "failed_tests": 0,
+      "assertion_violation_count": 0,
+      "assertion_violations": [],
+      "scoreboard_mismatch_count": 0,
+      "scoreboard_mismatches": [],
+      "functional_coverage": {
+        "total_bins": 24,
+        "covered_bins": 0,
+        "coverage_percentage": 0.0
+      },
+      "vcd_generated": true,
+      "run_dir": "C:\\Users\\aryan\\Downloads\\amd\\P1\\runs\\run_20261018_235323_6166bc",
+      "log_file": "C:\\Users\\aryan\\Downloads\\amd\\P1\\runs\\run_20261018_235323_6166bc\\sim.log",
+      "tests": [
+        {
+          "name": "TC01_ARB_RESET_AND_IDLE",
+          "status": "PASSED",
+          "details": [
+            "[+] Reset initialized properly: grant=2'b00, valid=0"
+          ],
+          "result_raw": "PASS (TC01_ARB_RESET_AND_IDLE)"
+        },
+        {
+          "name": "TC02_ARB_ISOLATED_GRANTS",
+          "status": "PASSED",
+          "details": [
+            "[+] Isolated Req 0 granted correctly.",
+            "[+] Isolated Req 1 granted correctly."
+          ],
+          "result_raw": "PASS (TC02_ARB_ISOLATED_GRANTS)"
+        },
+        {
+          "name": "TC03_ARB_FIXED_PRIORITY_CONTENTION",
+          "status": "PASSED",
+          "details": [
+            "[+] Fixed priority resolved in favor of Req 0: grant=2'b01, id=0"
+          ],
+          "result_raw": "PASS (TC03_ARB_FIXED_PRIORITY_CONTENTION)"
+        },
+        {
+          "name": "TC04_ARB_FIXED_PRIORITY_STARVATION",
+          "status": "PASSED",
+          "details": [
+            "[+] Req 1 starved as expected under fixed priority: wait_cycles_req1=12"
+          ],
+          "result_raw": "PASS (TC04_ARB_FIXED_PRIORITY_STARVATION)"
+        },
+        {
+          "name": "TC05_ARB_ROUND_ROBIN_FAIRNESS",
+          "status": "PASSED",
+          "details": [
+            "[+] Round-Robin Grants over 10 rounds: Req 0 = 5, Req 1 = 5",
+            "[+] Perfect 50/50 round-robin fairness achieved!"
+          ],
+          "result_raw": "PASS (TC05_ARB_ROUND_ROBIN_FAIRNESS)"
+        },
+        {
+          "name": "TC06_ARB_BURST_LOCK_NON_PREEMPTION",
+          "status": "PASSED",
+          "details": [
+            "[+] Req 1 acquired grant with burst_lock.",
+            "[+] Non-preemption verified: Req 1 held grant across 5 cycles despite Req 0 contention.",
+            "[+] Upon lock release, higher-priority Req 0 immediately granted."
+          ],
+          "result_raw": "PASS (TC06_ARB_BURST_LOCK_NON_PREEMPTION)"
+        },
+        {
+          "name": "TC07_ARB_REQUEST_WITHDRAWAL",
+          "status": "PASSED",
+          "details": [
+            "[+] Request withdrawal handled cleanly; arbiter idle."
+          ],
+          "result_raw": "PASS (TC07_ARB_REQUEST_WITHDRAWAL)"
+        }
+      ]
+    }
+  ]
+}

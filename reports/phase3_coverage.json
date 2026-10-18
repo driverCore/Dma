@@ -1,0 +1,31 @@
+{
+  "total_bins": 24,
+  "covered_bins": 24,
+  "coverage_percentage": 100.0,
+  "categories": {
+    "1-Beat": 9,
+    "2-Beat": 11,
+    "4-Beat": 11,
+    "8-Beat": 5,
+    "SingleWord": 1,
+    "Short": 3,
+    "Medium": 19,
+    "Long": 13,
+    "Remainder": 15,
+    "ZeroLen": 1,
+    "UnalignLen": 1,
+    "UnalignSrc": 1,
+    "UnalignDst": 1,
+    "BusRdErr": 1,
+    "BusWrErr": 1,
+    "Timeout": 1,
+    "SWAbort": 1,
+    "SoftReset": 1,
+    "Latency0": 7,
+    "Latency1": 14,
+    "LatencyMulti": 15,
+    "FixedPriority": 35,
+    "RoundRobin": 1,
+    "BurstLock": 27
+  }
+}

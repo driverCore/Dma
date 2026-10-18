@@ -1,0 +1,56 @@
+VCD info: dumpfile fifo_tb.vcd opened for output.
+
+=======================================================
+       DMA Synchronous FIFO Unit Verification Suite
+=======================================================
+
+>>> TEST_START: TC01_FIFO_RESET_STATUS
+[+] Reset verification passed: empty=1, full=0, occupancy=0
+>>> TEST_RESULT: PASS (TC01_FIFO_RESET_STATUS)
+
+>>> TEST_START: TC02_FIFO_SINGLE_PUSH_POP
+[+] FWFT Write 1 item passed: rd_data=0xa5a50001 is immediately visible! occupancy=1
+[+] Pop item passed: occupancy=0, empty=1
+>>> TEST_RESULT: PASS (TC02_FIFO_SINGLE_PUSH_POP)
+
+>>> TEST_START: TC03_FIFO_FILL_CAPACITY
+[+] Fill capacity passed: full=1, almost_full=1, occupancy=16
+>>> TEST_RESULT: PASS (TC03_FIFO_FILL_CAPACITY)
+
+>>> TEST_START: TC04_FIFO_OVERFLOW_PROTECTION
+[+] Overflow properly flagged: overflow=1, occupancy=16
+>>> TEST_RESULT: PASS (TC04_FIFO_OVERFLOW_PROTECTION)
+
+>>> TEST_START: TC05_FIFO_DRAIN_VERIFY
+[+] Drain verified 16 words in exact FIFO order: empty=1, occupancy=0
+>>> TEST_RESULT: PASS (TC05_FIFO_DRAIN_VERIFY)
+
+>>> TEST_START: TC06_FIFO_UNDERFLOW_PROTECTION
+[+] Underflow properly flagged: underflow=1, occupancy=0
+>>> TEST_RESULT: PASS (TC06_FIFO_UNDERFLOW_PROTECTION)
+
+>>> TEST_START: TC07_FIFO_SIMULTANEOUS_RW_PARTIAL
+[+] Simultaneous RW preserved occupancy=4, next head=0x00002001
+>>> TEST_RESULT: PASS (TC07_FIFO_SIMULTANEOUS_RW_PARTIAL)
+
+>>> TEST_START: TC08_FIFO_SIMULTANEOUS_RW_FULL
+[+] Simultaneous RW at FULL accepted write, next head=0x00003001, overflow=0, occupancy=16
+>>> TEST_RESULT: PASS (TC08_FIFO_SIMULTANEOUS_RW_FULL)
+
+>>> TEST_START: TC09_FIFO_SIMULTANEOUS_RW_EMPTY
+[+] Simultaneous RW at EMPTY rejected invalid read (underflow=1), accepted write (occupancy=1)
+>>> TEST_RESULT: PASS (TC09_FIFO_SIMULTANEOUS_RW_EMPTY)
+
+>>> TEST_START: TC10_FIFO_STREAMING_BANDWIDTH
+[+] Continuous streaming completed successfully without FIFO corruption.
+>>> TEST_RESULT: PASS (TC10_FIFO_STREAMING_BANDWIDTH)
+
+=======================================================
+           FIFO UNIT VERIFICATION SUMMARY
+=======================================================
+ Total Tests Executed : 10
+ Total Tests Passed   : 10
+ Total Tests Failed   : 0
+ [FIFO REGRESSION]    : ALL TESTS PASSED (100% SUCCESS)
+=======================================================
+

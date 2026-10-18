@@ -1,0 +1,124 @@
+{
+  "project": "DMA Verification & Performance Analysis Lab",
+  "candidate_domain": "AMD Design / Performance Verification Engineering Internship",
+  "timestamp": "2026-10-18 23:54:48",
+  "phases_completed": "Phase 0 through Phase 10 (All 11 Phases Complete)",
+  "demonstration_scenarios": {
+    "scenario_1_successful_transfer": {
+      "title": "Baseline DMA Transfer",
+      "verdict": "PASSED",
+      "passed": true,
+      "total_tests": 22,
+      "sim_time_sec": 0.208,
+      "run_id": "run_20261018_235448_1ab908"
+    },
+    "scenario_2_memory_backpressure": {
+      "title": "Memory Backpressure Characterization",
+      "trials_evaluated": 5,
+      "data": [
+        {
+          "exp_id": 30,
+          "sweep": "MEM_LAT_B8",
+          "xfer_bytes": 256,
+          "burst_beats": 8,
+          "mem_latency": 0,
+          "policy": "FixedPriority",
+          "contention": "None",
+          "cycles": 544,
+          "throughput_bytes_per_cycle": 0.4706,
+          "throughput_mb_s": 47.06,
+          "bus_utilization_pct": 23.53,
+          "max_fifo_occupancy": 8,
+          "wait_cycles_req0": 8,
+          "wait_cycles_req1": 0,
+          "grants_req0": 8,
+          "grants_req1": 0
+        },
+        {
+          "exp_id": 31,
+          "sweep": "MEM_LAT_B8",
+          "xfer_bytes": 256,
+          "burst_beats": 8,
+          "mem_latency": 1,
+          "policy": "FixedPriority",
+          "contention": "None",
+          "cycles": 672,
+          "throughput_bytes_per_cycle": 0.381,
+          "throughput_mb_s": 38.1,
+          "bus_utilization_pct": 19.05,
+          "max_fifo_occupancy": 8,
+          "wait_cycles_req0": 8,
+          "wait_cycles_req1": 0,
+          "grants_req0": 8,
+          "grants_req1": 0
+        },
+        {
+          "exp_id": 32,
+          "sweep": "MEM_LAT_B8",
+          "xfer_bytes": 256,
+          "burst_beats": 8,
+          "mem_latency": 2,
+          "policy": "FixedPriority",
+          "contention": "None",
+          "cycles": 800,
+          "throughput_bytes_per_cycle": 0.32,
+          "throughput_mb_s": 32.0,
+          "bus_utilization_pct": 16.0,
+          "max_fifo_occupancy": 8,
+          "wait_cycles_req0": 8,
+          "wait_cycles_req1": 0,
+          "grants_req0": 8,
+          "grants_req1": 0
+        }
+      ]
+    },
+    "scenario_3_multi_master_arbitration": {
+      "title": "Arbiter Round-Robin & Burst Locking",
+      "verdict": "PASSED",
+      "passed_tests": 7,
+      "run_id": "run_20261018_235449_41abb3"
+    },
+    "scenario_4_fault_injection": {
+      "title": "FIFO Overwrite Fault Injection",
+      "bug_injected": "BUG_FIFO_OVERWRITE",
+      "verdict": "FAILED",
+      "detected_properly": true,
+      "failure_category": "ASSERTION_VIOLATION",
+      "assertion_violations": 1,
+      "run_id": "run_20261018_235449_2e6774"
+    },
+    "scenario_5_clean_regression": {
+      "title": "Comprehensive Regression Suite",
+      "verdict": "PASSED",
+      "total_tests": 22,
+      "passed_tests": 22,
+      "coverage_percentage": 100.0,
+      "covered_bins": 24
+    },
+    "scenario_6_performance_comparison": {
+      "title": "Burst Scaling Amortization",
+      "burst_1_throughput_mb_s": 98.46,
+      "burst_8_throughput_mb_s": 343.35,
+      "speedup_factor": 3.487,
+      "bus_utilization_burst_1": 24.62,
+      "bus_utilization_burst_8": 85.84,
+      "finding": "8-beat burst transfers amortize arbitration handshake latency by 3.48x compared to single-beat transfers."
+    },
+    "scenario_7_web_platform": {
+      "title": "Full-Stack Dashboard & Waveform Debugger",
+      "backend": "FastAPI (16 endpoints, 25/25 passing tests)",
+      "frontend": "React 19 + TypeScript (7 views, Dark Aerospace Vanilla CSS)",
+      "waveform_viewer": "Cycle-accurate IEEE 1364 VCD parser with landmark navigation",
+      "status": "Operational on http://127.0.0.1:5173"
+    },
+    "scenario_8_synthesis_evidence": {
+      "title": "FPGA Synthesis & Timing",
+      "target_device": "5CSXFC6D6F31C6",
+      "target_frequency_mhz": 100.0,
+      "synthesizability_verdict": "PASSED",
+      "estimated_flip_flops": 531,
+      "sdc_file": "syn/dma_constraints.sdc"
+    }
+  },
+  "verdict": "ACCEPTANCE_CRITERIA_SATISFIED"
+}

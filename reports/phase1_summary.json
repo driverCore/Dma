@@ -1,0 +1,83 @@
+{
+  "phase": 1,
+  "phase_name": "Specification and Minimal DMA RTL",
+  "timestamp": "2026-10-18T11:46:52Z",
+  "simulator": "Icarus Verilog v12",
+  "compile_status": "SUCCESS",
+  "simulation_status": "SUCCESS",
+  "regression_verdict": "PASSED",
+  "total_tests": 8,
+  "passed_tests": 8,
+  "failed_tests": 0,
+  "tests": [
+    {
+      "name": "TC01_RESET_AND_REG_DEFAULTS",
+      "status": "PASSED",
+      "details": [
+        "[+] Reset initialized properly. STATUS = 0x00000000, FSM = 0"
+      ],
+      "result_raw": "PASS (TC01_RESET_AND_REG_DEFAULTS)"
+    },
+    {
+      "name": "TC02_SINGLE_WORD_TRANSFER",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 1 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] Single-word transfer complete in 20 cycles. Bytes Transferred = 4, IRQ = 1"
+      ],
+      "result_raw": "PASS (TC02_SINGLE_WORD_TRANSFER)"
+    },
+    {
+      "name": "TC03_MULTI_WORD_SHORT",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 4 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] 4-word transfer completed in 52 cycles (Throughput: 0.31 bytes/cycle)."
+      ],
+      "result_raw": "PASS (TC03_MULTI_WORD_SHORT)"
+    },
+    {
+      "name": "TC04_MULTI_WORD_LONG",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 16 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] 16-word transfer completed in 184 cycles (Throughput: 0.35 bytes/cycle)."
+      ],
+      "result_raw": "PASS (TC04_MULTI_WORD_LONG)"
+    },
+    {
+      "name": "TC05_ZERO_LENGTH_REJECTION",
+      "status": "PASSED",
+      "details": [
+        "[+] Zero-length transfer properly rejected. STATUS = 0x00000044 (ERR_INVALID_CFG set)"
+      ],
+      "result_raw": "PASS (TC05_ZERO_LENGTH_REJECTION)"
+    },
+    {
+      "name": "TC06_MISALIGNED_ADDRESS_REJECTION",
+      "status": "PASSED",
+      "details": [
+        "[+] Misaligned address properly rejected. STATUS = 0x00000050 (ERR_ALIGN set)"
+      ],
+      "result_raw": "PASS (TC06_MISALIGNED_ADDRESS_REJECTION)"
+    },
+    {
+      "name": "TC07_WATCHDOG_TIMEOUT_PROTECTION",
+      "status": "PASSED",
+      "details": [
+        "[+] Memory timeout watchdog triggered as expected. STATUS = 0x00000008 (ERR_MEM_TIMEOUT set)"
+      ],
+      "result_raw": "PASS (TC07_WATCHDOG_TIMEOUT_PROTECTION)"
+    },
+    {
+      "name": "TC08_SOFT_RESET_RECOVERY",
+      "status": "PASSED",
+      "details": [
+        "[+] Soft reset successfully aborted active transfer and restored IDLE. STATUS = 0x00000000"
+      ],
+      "result_raw": "PASS (TC08_SOFT_RESET_RECOVERY)"
+    }
+  ],
+  "vcd_dump": true,
+  "log_file": "C:\\Users\\aryan\\Downloads\\amd\\P1\\sim\\dma_sim.log"
+}

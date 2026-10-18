@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pytest_cache/
+.pytest_cache/
+venv/
+.env
+
+# Node & Frontend
+node_modules/
+frontend/node_modules/
+frontend/dist/
+.npm/
+
+# Hardware Simulation Binaries & Transients
+*.vvp
+*.vcd
+!output/*.webp
+!output/*.mp4
+
+# Transient run sandboxes (keep reports/ and output/)
+runs/
+.tempmediaStorage/

@@ -1,0 +1,225 @@
+{
+  "metadata": {
+    "title": "DMA Subsystem Hardware Failure Injection & Triage Campaign",
+    "phase": 5,
+    "timestamp": "2026-10-18T17:16:27Z",
+    "total_experiments": 4,
+    "detection_rate_pct": 100.0
+  },
+  "experiments": [
+    {
+      "experiment_id": "EXP_GOLDEN",
+      "name": "Golden Subsystem Verification",
+      "target_module": "None",
+      "bug_injected": "none",
+      "suite_used": "top",
+      "description": "Baseline regression verifying all 22 directed and randomized testcases pass.",
+      "expected_verdict": "PASSED",
+      "actual_verdict": "PASSED",
+      "failure_category": "NONE",
+      "detected_properly": true,
+      "passed_tests": 22,
+      "failed_tests": 0,
+      "assertion_violations": [],
+      "scoreboard_mismatches": [],
+      "run_dir": "C:\\Users\\aryan\\Downloads\\amd\\P1\\runs\\run_20261018_224626_72b032",
+      "log_file": "C:\\Users\\aryan\\Downloads\\amd\\P1\\runs\\run_20261018_224626_72b032\\sim.log"
+    },
+    {
+      "experiment_id": "EXP_BUG_FIFO",
+      "name": "Bug A: FIFO Full Overwrite Under Backpressure",
+      "target_module": "rtl/dma_fifo.v",
+      "bug_injected": "fifo_overflow",
+      "suite_used": "fifo",
+      "description": "Removes !full protection from FIFO write gating, causing unread words to be overwritten.",
+      "expected_verdict": "FAILED",
+      "actual_verdict": "FAILED",
+      "failure_category": "ASSERTION_VIOLATION",
+      "detected_properly": true,
+      "passed_tests": 7,
+      "failed_tests": 3,
+      "assertion_violations": [
+        {
+          "cycle": 25,
+          "assertion": "ASSERT_FIFO_OVF",
+          "message": "Illegal write push while FIFO is FULL!"
+        }
+      ],
+      "scoreboard_mismatches": [
+        {
+          "word_offset": 0,
+          "address": "Item_0",
+          "expected": "0x00001000",
+          "actual": "0xdeadbeef",
+          "diff": "N/A"
+        }
+      ],
+      "run_dir": "C:\\Users\\aryan\\Downloads\\amd\\P1\\runs\\run_20261018_224626_b0e052",
+      "log_file": "C:\\Users\\aryan\\Downloads\\amd\\P1\\runs\\run_20261018_224626_b0e052\\sim.log"
+    },
+    {
+      "experiment_id": "EXP_BUG_ARBITER",
+      "name": "Bug B: Arbiter Priority Inversion & Master 0 Starvation",
+      "target_module": "rtl/dma_arbiter.v",
+      "bug_injected": "arbiter_starve",
+      "suite_used": "top",
+      "description": "Inverts fixed priority order, starving Master 0 (DMA) during external requester contention.",
+      "expected_verdict": "FAILED",
+      "actual_verdict": "FAILED",
+      "failure_category": "TIMEOUT_WATCHDOG",
+      "detected_properly": true,
+      "passed_tests": 21,
+      "failed_tests": 1,
+      "assertion_violations": [],
+      "scoreboard_mismatches": [
+        {
+          "word_offset": 0,
+          "address": "0x00002000",
+          "expected": "0xaaaa0001",
+          "actual": "0x00000000",
+          "diff": "0xaaaa0001"
+        },
+        {
+          "word_offset": 1,
+          "address": "0x00002004",
+          "expected": "0xaaab0102",
+          "actual": "0x00000000",
+          "diff": "0xaaab0102"
+        },
+        {
+          "word_offset": 2,
+          "address": "0x00002008",
+          "expected": "0xaaac0203",
+          "actual": "0x00000000",
+          "diff": "0xaaac0203"
+        },
+        {
+          "word_offset": 3,
+          "address": "0x0000200c",
+          "expected": "0xaaad0304",
+          "actual": "0x00000000",
+          "diff": "0xaaad0304"
+        },
+        {
+          "word_offset": 4,
+          "address": "0x00002010",
+          "expected": "0xaaae0405",
+          "actual": "0x00000000",
+          "diff": "0xaaae0405"
+        },
+        {
+          "word_offset": 5,
+          "address": "0x00002014",
+          "expected": "0xaaaf0506",
+          "actual": "0x00000000",
+          "diff": "0xaaaf0506"
+        },
+        {
+          "word_offset": 6,
+          "address": "0x00002018",
+          "expected": "0xaab00607",
+          "actual": "0x00000000",
+          "diff": "0xaab00607"
+        },
+        {
+          "word_offset": 7,
+          "address": "0x0000201c",
+          "expected": "0xaab10708",
+          "actual": "0x00000000",
+          "diff": "0xaab10708"
+        }
+      ],
+      "run_dir": "C:\\Users\\aryan\\Downloads\\amd\\P1\\runs\\run_20261018_224626_d9751c",
+      "log_file": "C:\\Users\\aryan\\Downloads\\amd\\P1\\runs\\run_20261018_224626_d9751c\\sim.log"
+    },
+    {
+      "experiment_id": "EXP_BUG_ADDR",
+      "name": "Bug C: Memory Address Stride & Alternate Word Dropping",
+      "target_module": "rtl/dma_controller.v",
+      "bug_injected": "addr_stride",
+      "suite_used": "top",
+      "description": "Increments source address by 8 bytes instead of 4, dropping alternate words.",
+      "expected_verdict": "FAILED",
+      "actual_verdict": "FAILED",
+      "failure_category": "SCOREBOARD_DATA_MISMATCH",
+      "detected_properly": true,
+      "passed_tests": 10,
+      "failed_tests": 12,
+      "assertion_violations": [],
+      "scoreboard_mismatches": [
+        {
+          "word_offset": 1,
+          "address": "0x00002004",
+          "expected": "0x22230102",
+          "actual": "0x22240203",
+          "diff": "0x00070301"
+        },
+        {
+          "word_offset": 2,
+          "address": "0x00002008",
+          "expected": "0x22240203",
+          "actual": "0x00000000",
+          "diff": "0x22240203"
+        },
+        {
+          "word_offset": 3,
+          "address": "0x0000200c",
+          "expected": "0x22250304",
+          "actual": "0x00000000",
+          "diff": "0x22250304"
+        },
+        {
+          "word_offset": 1,
+          "address": "0x00002004",
+          "expected": "0x44450102",
+          "actual": "0x44460203",
+          "diff": "0x00030301"
+        },
+        {
+          "word_offset": 2,
+          "address": "0x00002008",
+          "expected": "0x44460203",
+          "actual": "0x44480405",
+          "diff": "0x000e0606"
+        },
+        {
+          "word_offset": 3,
+          "address": "0x0000200c",
+          "expected": "0x44470304",
+          "actual": "0x444a0607",
+          "diff": "0x000d0503"
+        },
+        {
+          "word_offset": 4,
+          "address": "0x00002010",
+          "expected": "0x44480405",
+          "actual": "0x444c0809",
+          "diff": "0x00040c0c"
+        },
+        {
+          "word_offset": 5,
+          "address": "0x00002014",
+          "expected": "0x44490506",
+          "actual": "0x444e0a0b",
+          "diff": "0x00070f0d"
+        },
+        {
+          "word_offset": 6,
+          "address": "0x00002018",
+          "expected": "0x444a0607",
+          "actual": "0x44500c0d",
+          "diff": "0x001a0a0a"
+        },
+        {
+          "word_offset": 7,
+          "address": "0x0000201c",
+          "expected": "0x444b0708",
+          "actual": "0x44520e0f",
+          "diff": "0x00190907"
+        }
+      ],
+      "run_dir": "C:\\Users\\aryan\\Downloads\\amd\\P1\\runs\\run_20261018_224627_3502c9",
+      "log_file": "C:\\Users\\aryan\\Downloads\\amd\\P1\\runs\\run_20261018_224627_3502c9\\sim.log"
+    }
+  ]
+}

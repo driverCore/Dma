@@ -1,0 +1,99 @@
+{
+  "suite": "fifo",
+  "description": "FIFO Unit Verification",
+  "phase": 2,
+  "timestamp": "2026-10-18T17:12:14Z",
+  "simulator": "Icarus Verilog v12",
+  "seed_used": null,
+  "compile_status": "SUCCESS",
+  "simulation_status": "SUCCESS",
+  "regression_verdict": "PASSED",
+  "total_tests": 10,
+  "passed_tests": 10,
+  "failed_tests": 0,
+  "assertion_violations": 0,
+  "tests": [
+    {
+      "name": "TC01_FIFO_RESET_STATUS",
+      "status": "PASSED",
+      "details": [
+        "[+] Reset verification passed: empty=1, full=0, occupancy=0"
+      ],
+      "result_raw": "PASS (TC01_FIFO_RESET_STATUS)"
+    },
+    {
+      "name": "TC02_FIFO_SINGLE_PUSH_POP",
+      "status": "PASSED",
+      "details": [
+        "[+] FWFT Write 1 item passed: rd_data=0xa5a50001 is immediately visible! occupancy=1",
+        "[+] Pop item passed: occupancy=0, empty=1"
+      ],
+      "result_raw": "PASS (TC02_FIFO_SINGLE_PUSH_POP)"
+    },
+    {
+      "name": "TC03_FIFO_FILL_CAPACITY",
+      "status": "PASSED",
+      "details": [
+        "[+] Fill capacity passed: full=1, almost_full=1, occupancy=16"
+      ],
+      "result_raw": "PASS (TC03_FIFO_FILL_CAPACITY)"
+    },
+    {
+      "name": "TC04_FIFO_OVERFLOW_PROTECTION",
+      "status": "PASSED",
+      "details": [
+        "[+] Overflow properly flagged: overflow=1, occupancy=16"
+      ],
+      "result_raw": "PASS (TC04_FIFO_OVERFLOW_PROTECTION)"
+    },
+    {
+      "name": "TC05_FIFO_DRAIN_VERIFY",
+      "status": "PASSED",
+      "details": [
+        "[+] Drain verified 16 words in exact FIFO order: empty=1, occupancy=0"
+      ],
+      "result_raw": "PASS (TC05_FIFO_DRAIN_VERIFY)"
+    },
+    {
+      "name": "TC06_FIFO_UNDERFLOW_PROTECTION",
+      "status": "PASSED",
+      "details": [
+        "[+] Underflow properly flagged: underflow=1, occupancy=0"
+      ],
+      "result_raw": "PASS (TC06_FIFO_UNDERFLOW_PROTECTION)"
+    },
+    {
+      "name": "TC07_FIFO_SIMULTANEOUS_RW_PARTIAL",
+      "status": "PASSED",
+      "details": [
+        "[+] Simultaneous RW preserved occupancy=4, next head=0x00002001"
+      ],
+      "result_raw": "PASS (TC07_FIFO_SIMULTANEOUS_RW_PARTIAL)"
+    },
+    {
+      "name": "TC08_FIFO_SIMULTANEOUS_RW_FULL",
+      "status": "PASSED",
+      "details": [
+        "[+] Simultaneous RW at FULL accepted write, next head=0x00003001, overflow=0, occupancy=16"
+      ],
+      "result_raw": "PASS (TC08_FIFO_SIMULTANEOUS_RW_FULL)"
+    },
+    {
+      "name": "TC09_FIFO_SIMULTANEOUS_RW_EMPTY",
+      "status": "PASSED",
+      "details": [
+        "[+] Simultaneous RW at EMPTY rejected invalid read (underflow=1), accepted write (occupancy=1)"
+      ],
+      "result_raw": "PASS (TC09_FIFO_SIMULTANEOUS_RW_EMPTY)"
+    },
+    {
+      "name": "TC10_FIFO_STREAMING_BANDWIDTH",
+      "status": "PASSED",
+      "details": [
+        "[+] Continuous streaming completed successfully without FIFO corruption."
+      ],
+      "result_raw": "PASS (TC10_FIFO_STREAMING_BANDWIDTH)"
+    }
+  ],
+  "log_file": "C:\\Users\\aryan\\Downloads\\amd\\P1\\sim\\fifo_sim.log"
+}

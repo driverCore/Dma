@@ -1,0 +1,232 @@
+{
+  "suite": "top",
+  "description": "Top Subsystem Phase 2 Verification",
+  "phase": 2,
+  "timestamp": "2026-10-18T16:55:27Z",
+  "simulator": "Icarus Verilog v12",
+  "compile_status": "SUCCESS",
+  "simulation_status": "SUCCESS",
+  "regression_verdict": "PASSED",
+  "total_tests": 22,
+  "passed_tests": 22,
+  "failed_tests": 0,
+  "tests": [
+    {
+      "name": "TC01_RESET_AND_REG_DEFAULTS",
+      "status": "PASSED",
+      "details": [
+        "[+] Reset initialized properly. STATUS = 0x00000000, FSM = 0, FIFO occ = 0"
+      ],
+      "result_raw": "PASS (TC01_RESET_AND_REG_DEFAULTS)"
+    },
+    {
+      "name": "TC02_SINGLE_WORD_TRANSFER",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 1 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] Single-word transfer complete in 22 cycles (Throughput: 0.18 B/cycle)."
+      ],
+      "result_raw": "PASS (TC02_SINGLE_WORD_TRANSFER)"
+    },
+    {
+      "name": "TC03_BURST_2_TRANSFER",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 4 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] 2-beat burst transfer complete in 54 cycles (Throughput: 0.30 B/cycle)."
+      ],
+      "result_raw": "PASS (TC03_BURST_2_TRANSFER)"
+    },
+    {
+      "name": "TC04_BURST_4_TRANSFER",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 16 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] 4-beat burst transfer complete in 180 cycles (Throughput: 0.36 B/cycle)."
+      ],
+      "result_raw": "PASS (TC04_BURST_4_TRANSFER)"
+    },
+    {
+      "name": "TC05_BURST_8_TRANSFER",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 32 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] 8-beat burst transfer complete in 340 cycles (Throughput: 0.38 B/cycle)."
+      ],
+      "result_raw": "PASS (TC05_BURST_8_TRANSFER)"
+    },
+    {
+      "name": "TC06_INCOMPLETE_REMAINDER_BURST",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 5 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] Remainder burst (4 + 1 words) completed cleanly: 66 cycles."
+      ],
+      "result_raw": "PASS (TC06_INCOMPLETE_REMAINDER_BURST)"
+    },
+    {
+      "name": "TC07_FIFO_BACKPRESSURE_HANDLING",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 16 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] Backpressure flow control handled successfully with 0 overflows/underflows."
+      ],
+      "result_raw": "PASS (TC07_FIFO_BACKPRESSURE_HANDLING)"
+    },
+    {
+      "name": "TC08_FIXED_PRIORITY_ARBITRATION_CONTENTION",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 8 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] Fixed-priority arbitration verified: DMA held priority over external requester."
+      ],
+      "result_raw": "PASS (TC08_FIXED_PRIORITY_ARBITRATION_CONTENTION)"
+    },
+    {
+      "name": "TC09_ROUND_ROBIN_ARBITRATION_CONTENTION",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 8 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] Round-Robin arbitration contention passed: Fair bus sharing verified."
+      ],
+      "result_raw": "PASS (TC09_ROUND_ROBIN_ARBITRATION_CONTENTION)"
+    },
+    {
+      "name": "TC10_ERR_ZERO_LENGTH",
+      "status": "PASSED",
+      "details": [
+        "[+] ERROR VERIFIED: ERR_INVALID_CFG correctly latched (STATUS = 0x00000044, BUSY = 0)."
+      ],
+      "result_raw": "PASS (TC10_ERR_ZERO_LENGTH)"
+    },
+    {
+      "name": "TC11_ERR_UNALIGNED_LENGTH",
+      "status": "PASSED",
+      "details": [
+        "[+] ERROR VERIFIED: ERR_INVALID_CFG correctly latched (STATUS = 0x00000044, BUSY = 0)."
+      ],
+      "result_raw": "PASS (TC11_ERR_UNALIGNED_LENGTH)"
+    },
+    {
+      "name": "TC12_ERR_UNALIGNED_SRC_ADDR",
+      "status": "PASSED",
+      "details": [
+        "[+] ERROR VERIFIED: ERR_ALIGN correctly latched (STATUS = 0x00000050, BUSY = 0)."
+      ],
+      "result_raw": "PASS (TC12_ERR_UNALIGNED_SRC_ADDR)"
+    },
+    {
+      "name": "TC13_ERR_UNALIGNED_DST_ADDR",
+      "status": "PASSED",
+      "details": [
+        "[+] ERROR VERIFIED: ERR_ALIGN correctly latched (STATUS = 0x00000050, BUSY = 0)."
+      ],
+      "result_raw": "PASS (TC13_ERR_UNALIGNED_DST_ADDR)"
+    },
+    {
+      "name": "TC14_ERR_BUS_READ_INJECTION",
+      "status": "PASSED",
+      "details": [
+        "[+] ERROR VERIFIED: ERR_BUS correctly latched (STATUS = 0x00000060, BUSY = 0).",
+        "[+] Bus error during read cleanly halted engine and asserted IRQ."
+      ],
+      "result_raw": "PASS (TC14_ERR_BUS_READ_INJECTION)"
+    },
+    {
+      "name": "TC15_ERR_BUS_WRITE_INJECTION",
+      "status": "PASSED",
+      "details": [
+        "[+] ERROR VERIFIED: ERR_BUS correctly latched (STATUS = 0x00000060, BUSY = 0).",
+        "[+] Bus error during write cleanly halted engine and asserted IRQ."
+      ],
+      "result_raw": "PASS (TC15_ERR_BUS_WRITE_INJECTION)"
+    },
+    {
+      "name": "TC16_ERR_WATCHDOG_TIMEOUT",
+      "status": "PASSED",
+      "details": [
+        "[+] ERROR VERIFIED: ERR_MEM_TIMEOUT correctly latched (STATUS = 0x00000048, BUSY = 0).",
+        "[+] Watchdog timeout detected correctly after 200 cycles; engine gracefully aborted."
+      ],
+      "result_raw": "PASS (TC16_ERR_WATCHDOG_TIMEOUT)"
+    },
+    {
+      "name": "TC17_RELIABILITY_SW_ABORT",
+      "status": "PASSED",
+      "details": [
+        "[+] Software abort returned FSM to IDLE (BUSY=0, bytes transferred before abort: 0)."
+      ],
+      "result_raw": "PASS (TC17_RELIABILITY_SW_ABORT)"
+    },
+    {
+      "name": "TC18_RELIABILITY_SOFT_RESET_RECOVERY",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 4 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] Soft reset cleared all state; re-armed transfer completed with 100% data match."
+      ],
+      "result_raw": "PASS (TC18_RELIABILITY_SOFT_RESET_RECOVERY)"
+    },
+    {
+      "name": "TC19_LATENCY_ZERO_WAIT_STATE",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 8 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] Zero-wait-state transfer complete in 78 cycles (Throughput: 0.41 B/cycle)."
+      ],
+      "result_raw": "PASS (TC19_LATENCY_ZERO_WAIT_STATE)"
+    },
+    {
+      "name": "TC20_LATENCY_HIGH_LATENCY_SLAVE",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 8 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] 4-cycle high-latency transfer completed successfully in 142 cycles."
+      ],
+      "result_raw": "PASS (TC20_LATENCY_HIGH_LATENCY_SLAVE)"
+    },
+    {
+      "name": "TC21_FIFO_CAPACITY_SATURATION",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 64 words (0x00001000 -> 0x00002000) verified successfully.",
+        "[+] Large 256-byte multi-burst saturation transfer completed cleanly without overflow/underflow."
+      ],
+      "result_raw": "PASS (TC21_FIFO_CAPACITY_SATURATION)"
+    },
+    {
+      "name": "TC22_CONSTRAINED_RANDOM_REGRESSION",
+      "status": "PASSED",
+      "details": [
+        "[+] SCOREBOARD MATCH: 6 words (0x00001034 -> 0x0000203c) verified successfully.",
+        "[+] SCOREBOARD MATCH: 13 words (0x0000103c -> 0x00002014) verified successfully.",
+        "[+] SCOREBOARD MATCH: 28 words (0x00001000 -> 0x00002030) verified successfully.",
+        "[+] SCOREBOARD MATCH: 4 words (0x00001004 -> 0x0000200c) verified successfully.",
+        "[+] SCOREBOARD MATCH: 3 words (0x0000101c -> 0x00002014) verified successfully.",
+        "[+] SCOREBOARD MATCH: 23 words (0x00001028 -> 0x00002010) verified successfully.",
+        "[+] SCOREBOARD MATCH: 30 words (0x0000100c -> 0x00002024) verified successfully.",
+        "[+] SCOREBOARD MATCH: 30 words (0x00001034 -> 0x00002034) verified successfully.",
+        "[+] SCOREBOARD MATCH: 11 words (0x00001008 -> 0x00002014) verified successfully.",
+        "[+] SCOREBOARD MATCH: 9 words (0x00001030 -> 0x0000203c) verified successfully.",
+        "[+] SCOREBOARD MATCH: 15 words (0x00001014 -> 0x0000201c) verified successfully.",
+        "[+] SCOREBOARD MATCH: 15 words (0x0000103c -> 0x00002030) verified successfully.",
+        "[+] SCOREBOARD MATCH: 17 words (0x0000103c -> 0x00002038) verified successfully.",
+        "[+] SCOREBOARD MATCH: 13 words (0x00001000 -> 0x00002038) verified successfully.",
+        "[+] SCOREBOARD MATCH: 27 words (0x00001034 -> 0x00002008) verified successfully.",
+        "[+] SCOREBOARD MATCH: 9 words (0x00001034 -> 0x00002018) verified successfully.",
+        "[+] SCOREBOARD MATCH: 16 words (0x00001004 -> 0x00002028) verified successfully.",
+        "[+] SCOREBOARD MATCH: 23 words (0x00001000 -> 0x0000202c) verified successfully.",
+        "[+] SCOREBOARD MATCH: 8 words (0x00001034 -> 0x00002010) verified successfully.",
+        "[+] SCOREBOARD MATCH: 7 words (0x00001004 -> 0x0000201c) verified successfully.",
+        "[+] SCOREBOARD MATCH: 27 words (0x00001038 -> 0x0000202c) verified successfully.",
+        "[+] SCOREBOARD MATCH: 20 words (0x00001014 -> 0x0000200c) verified successfully.",
+        "[+] SCOREBOARD MATCH: 21 words (0x00001038 -> 0x0000202c) verified successfully.",
+        "[+] SCOREBOARD MATCH: 14 words (0x00001000 -> 0x00002024) verified successfully.",
+        "[+] SCOREBOARD MATCH: 24 words (0x00001038 -> 0x00002034) verified successfully.",
+        "[+] All 25 constrained-random transfers PASSED with 0 mismatches!"
+      ],
+      "result_raw": "PASS (TC22_CONSTRAINED_RANDOM_REGRESSION)"
+    }
+  ],
+  "log_file": "C:\\Users\\aryan\\Downloads\\amd\\P1\\sim\\dma_sim.log"
+}

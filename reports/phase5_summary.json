@@ -1,0 +1,93 @@
+{
+  "phase": 5,
+  "title": "Simulation Automation and Failure Triage Engine Summary",
+  "timestamp": "2026-10-18T17:17:00Z",
+  "toolchain": {
+    "compiler": "Icarus Verilog v12.0",
+    "simulator": "VVP Engine",
+    "python_runtime": "Python 3.13",
+    "clock_frequency_mhz": 100.0
+  },
+  "automation_features": {
+    "isolated_run_directories": true,
+    "runs_directory": "runs/",
+    "configuration_validation": true,
+    "watchdog_timeout_handling": true,
+    "deterministic_seed_logging": true,
+    "multi_format_reports": ["JSON", "CSV", "Markdown"],
+    "failure_taxonomy": [
+      "SCOREBOARD_DATA_MISMATCH",
+      "ASSERTION_VIOLATION",
+      "TIMEOUT_WATCHDOG",
+      "PROTOCOL_HANDSHAKE_ERROR",
+      "COMPILATION_ERROR",
+      "SIMULATION_TIMEOUT"
+    ]
+  },
+  "batch_regression": {
+    "suite": "top",
+    "total_runs": 5,
+    "passed_runs": 5,
+    "failed_runs": 0,
+    "tests_per_run": 22,
+    "random_transfers_per_run": 25,
+    "total_tests_executed": 110,
+    "total_random_transfers_executed": 125,
+    "assertion_violations": 0,
+    "functional_coverage_pct": 100.0,
+    "verdict": "PASSED"
+  },
+  "triage_campaign": {
+    "total_experiments": 4,
+    "detection_rate_pct": 100.0,
+    "experiments": [
+      {
+        "id": "EXP_GOLDEN",
+        "name": "Golden Subsystem Verification",
+        "target_module": "None",
+        "injected_fault": "none",
+        "expected": "PASSED",
+        "actual": "PASSED",
+        "category": "NONE",
+        "status": "PASS"
+      },
+      {
+        "id": "EXP_BUG_FIFO",
+        "name": "Bug A: FIFO Full Overwrite Under Backpressure",
+        "target_module": "rtl/dma_fifo.v",
+        "injected_fault": "fifo_overflow",
+        "expected": "FAILED",
+        "actual": "FAILED",
+        "category": "ASSERTION_VIOLATION",
+        "status": "PASS"
+      },
+      {
+        "id": "EXP_BUG_ARBITER",
+        "name": "Bug B: Arbiter Priority Inversion & Master 0 Starvation",
+        "target_module": "rtl/dma_arbiter.v",
+        "injected_fault": "arbiter_starve",
+        "expected": "FAILED",
+        "actual": "FAILED",
+        "category": "TIMEOUT_WATCHDOG",
+        "status": "PASS"
+      },
+      {
+        "id": "EXP_BUG_ADDR",
+        "name": "Bug C: Memory Address Stride & Alternate Word Dropping",
+        "target_module": "rtl/dma_controller.v",
+        "injected_fault": "addr_stride",
+        "expected": "FAILED",
+        "actual": "FAILED",
+        "category": "SCOREBOARD_DATA_MISMATCH",
+        "status": "PASS"
+      }
+    ]
+  },
+  "artifacts": {
+    "triage_json": "reports/failure_triage_report.json",
+    "triage_markdown": "docs/failure_triage_report.md",
+    "regression_summary_json": "reports/regression_summary.json",
+    "regression_results_csv": "reports/regression_results.csv",
+    "regression_history_json": "reports/regression_history.json"
+  }
+}
